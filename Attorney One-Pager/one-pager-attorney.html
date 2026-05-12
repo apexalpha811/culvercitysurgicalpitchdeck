@@ -2,746 +2,357 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Culver City Surgical — Attorney One-Pager</title>
+<title>Culver City Surgical — Attorney Leave-Behind</title>
 <style>
-@font-face {
-  font-family: 'Fraunces';
-  src: url('../../repo/reference/fonts/fraunces-600.woff2') format('woff2');
-  font-weight: 600;
-}
-@font-face {
-  font-family: 'Fraunces';
-  src: url('../../repo/reference/fonts/fraunces-500.woff2') format('woff2');
-  font-weight: 500;
-}
-@font-face {
-  font-family: 'Inter';
-  src: url('../../repo/reference/fonts/inter-400.woff2') format('woff2');
-  font-weight: 400;
-}
-@font-face {
-  font-family: 'Inter';
-  src: url('../../repo/reference/fonts/inter-500.woff2') format('woff2');
-  font-weight: 500;
-}
-@font-face {
-  font-family: 'Inter';
-  src: url('../../repo/reference/fonts/inter-600.woff2') format('woff2');
-  font-weight: 600;
-}
+@font-face { font-family:'Fraunces'; src:url('../../repo/reference/fonts/fraunces-600.woff2') format('woff2'); font-weight:600; }
+@font-face { font-family:'Fraunces'; src:url('../../repo/reference/fonts/fraunces-500.woff2') format('woff2'); font-weight:500; }
+@font-face { font-family:'Inter'; src:url('../../repo/reference/fonts/inter-400.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../../repo/reference/fonts/inter-500.woff2') format('woff2'); font-weight:500; }
+@font-face { font-family:'Inter'; src:url('../../repo/reference/fonts/inter-600.woff2') format('woff2'); font-weight:600; }
 
 :root {
-  --teal-dark: #16393b;
-  --teal: #1e4c4f;
-  --teal-light: #4bbec6;
-  --gold: #d4af8a;
-  --gold-dark: #b8925e;
-  --gold-light: #ede0cc;
-  --white: #ffffff;
-  --off-white: #faf8f5;
-  --text: #1a2e2f;
-  --text-muted: #5a5040;
+  --dark:#16393b;
+  --brown:#2a1f0e;
+  --accent:#4bbec6;
+  --gold:#d4af8a;
+  --gold-dark:#b8925e;
+  --white:#ffffff;
+  --off:#faf8f5;
+  --ink:#1a2e2f;
+  --muted:#5a5040;
+}
+
+@media print {
+  @page { size: landscape; margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  .page { box-shadow: none !important; }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  width: 11in;
-  height: 8.5in;
+body {
   font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text);
-  overflow: hidden;
+  background: #e8e0d4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
 }
 
-/* Layout */
 .page {
   width: 11in;
-  height: 8.5in;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
+  min-height: 8.5in;
   background: var(--white);
-  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header */
+/* HEADER */
 .header {
-  background: var(--teal-dark);
-  padding: 18px 40px;
+  background: var(--dark);
+  padding: 16px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 3px solid var(--gold);
+}
+.header-left { display: flex; align-items: center; gap: 18px; }
+.logo { height: 40px; filter: brightness(0) invert(1); }
+.header-divider { width: 1px; height: 32px; background: rgba(255,255,255,.2); }
+.header-tagline { font-size: 11px; font-weight: 600; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
+.header-right { font-size: 11px; color: rgba(255,255,255,.6); text-align: right; line-height: 1.6; }
+.header-right strong { color: var(--accent); }
+
+/* HERO BAND */
+.hero {
+  background: linear-gradient(135deg, var(--brown) 0%, #1a1008 100%);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
   gap: 24px;
 }
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  height: 44px;
-  width: auto;
-  filter: brightness(0) invert(1);
-}
-
-.header-divider {
-  width: 1px;
-  height: 36px;
-  background: rgba(255,255,255,0.25);
-}
-
-.header-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.header-contact {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  color: rgba(255,255,255,0.7);
-  text-align: right;
-  line-height: 1.6;
-}
-.header-contact strong {
-  color: var(--teal-light);
-  font-weight: 600;
-  font-size: 12px;
-}
-
-/* Hero band — gold for attorney */
-.hero-band {
-  background: linear-gradient(135deg, #2a1f0e 0%, #3d2d12 100%);
-  padding: 16px 40px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border-top: 3px solid var(--gold);
-}
-
 .hero-quote {
   font-family: 'Fraunces', serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.4;
+  font-size: 14px; font-weight: 600;
+  color: var(--white); line-height: 1.5;
   flex: 1;
 }
-
-.hero-quote em {
-  color: var(--gold);
-  font-style: normal;
-}
-
+.hero-quote em { color: var(--gold); font-style: normal; }
+.hero-badges { display: flex; gap: 10px; }
 .hero-badge {
-  background: rgba(212,175,138,0.15);
-  border: 1px solid rgba(212,175,138,0.4);
-  border-radius: 8px;
-  padding: 8px 16px;
+  background: rgba(212,175,138,.15);
+  border: 1px solid rgba(212,175,138,.35);
+  border-radius: 7px;
+  padding: 8px 14px;
   text-align: center;
   white-space: nowrap;
 }
-.hero-badge .badge-label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2px;
-}
-.hero-badge .badge-val {
+.hero-badge .bval {
   font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--white);
-  display: block;
-  line-height: 1;
+  font-size: 20px; font-weight: 600;
+  color: var(--white); display: block; line-height: 1;
+}
+.hero-badge .blabel {
+  font-size: 8.5px; font-weight: 600;
+  letter-spacing: .1em; color: var(--gold);
+  text-transform: uppercase; display: block; margin-top: 3px;
 }
 
-/* Stats row */
-.stats-row {
+/* STATS ROW */
+.stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-top: 3px solid var(--teal-light);
+  border-top: 3px solid var(--gold);
+  border-bottom: 1px solid #e0d8cc;
 }
-
-.stat-tile {
-  padding: 16px 24px;
-  border-right: 1px solid #e0eaeb;
-  background: var(--off-white);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+.stat {
+  padding: 14px 20px;
+  border-right: 1px solid #e0d8cc;
+  background: var(--off);
   position: relative;
 }
-.stat-tile:last-child { border-right: none; }
-
-.stat-value {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--teal-dark);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 2px;
-}
-.stat-desc {
-  font-size: 10px;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.stat-tile::before {
+.stat:last-child { border-right: none; }
+.stat::before {
   content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px;
-  height: 100%;
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%;
   background: var(--gold);
 }
+.stat-label { font-size: 8.5px; font-weight: 700; letter-spacing: .12em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 4px; }
+.stat-val { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+.stat-desc { font-size: 9.5px; color: var(--muted); line-height: 1.4; }
 
-/* Main body */
-.body-grid {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 0;
-  overflow: hidden;
-  min-height: 0;
-  height: 100%;
-}
-
-/* Left: flywheel + specialties */
-.body-left {
-  padding: 20px 28px;
-  border-right: 1px solid #dce9ea;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: space-between;
-}
-
-.section-label {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 8px;
-}
-
-/* Flywheel */
-.flywheel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0;
-}
-
-.fw-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  text-align: center;
-  flex: 1;
-}
-
+/* FLYWHEEL */
+.flywheel-section { padding: 18px 36px; border-bottom: 1px solid #e0d8cc; }
+.section-label { font-size: 8.5px; font-weight: 700; letter-spacing: .15em; color: var(--gold-dark); text-transform: uppercase; margin-bottom: 12px; }
+.flywheel { display: flex; align-items: center; gap: 0; }
+.fw-step { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; flex: 1; }
 .fw-circle {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--teal-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(22,57,59,0.25);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; position: relative;
+  box-shadow: 0 2px 8px rgba(22,57,59,.2);
 }
-
-.fw-circle .fw-num {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  width: 16px;
-  height: 16px;
-  background: var(--gold);
-  border-radius: 50%;
-  font-size: 8px;
-  font-weight: 700;
-  color: var(--teal-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fw-n {
+  position: absolute; top: -3px; right: -3px;
+  width: 16px; height: 16px;
+  background: var(--gold); border-radius: 50%;
+  font-size: 8px; font-weight: 700; color: var(--dark);
+  display: flex; align-items: center; justify-content: center;
   font-family: 'Inter', sans-serif;
 }
+.fw-label { font-size: 9.5px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.fw-sub { font-size: 8px; color: var(--muted); line-height: 1.3; }
+.fw-arrow { font-size: 14px; color: var(--gold); flex-shrink: 0; padding: 0 2px; margin-top: -18px; }
 
-.fw-title {
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--teal-dark);
-  line-height: 1.3;
-}
-.fw-sub {
-  font-size: 8.5px;
-  color: var(--text-muted);
-  line-height: 1.3;
-}
-
-.fw-arrow {
-  flex: 0 0 auto;
-  color: var(--gold);
-  font-size: 16px;
-  padding: 0 2px;
-  margin-top: -16px;
-}
-
-/* Specialties grid */
-.specialties-grid {
+/* QUOTE + SPECIALTIES ROW */
+.mid-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  border-bottom: 1px solid #e0d8cc;
 }
 
-.spec-pill {
-  background: white;
-  border: 1px solid #d0e4e5;
-  border-radius: 6px;
-  padding: 6px 10px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.spec-pill.highlight {
-  background: rgba(212,175,138,0.07);
-  border-color: var(--gold);
-}
-
-.spec-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  flex-shrink: 0;
-}
-.spec-pill.highlight .spec-dot {
-  background: var(--gold);
-}
-
-.spec-name {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--text);
-  line-height: 1.2;
-}
-.spec-pill.highlight .spec-name {
-  font-weight: 600;
-  color: var(--teal-dark);
-}
-.spec-badge {
-  font-size: 7.5px;
-  font-weight: 700;
-  color: var(--gold-dark);
-  letter-spacing: 0.05em;
-}
-
-/* Right: pull quote + why us */
-.body-right {
-  padding: 20px 24px;
+.quote-section {
+  padding: 20px 28px;
+  background: var(--dark);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background: var(--off-white);
-  justify-content: space-between;
-}
-
-.pull-quote-block {
-  background: var(--teal-dark);
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,.1);
   border-top: 3px solid var(--gold);
-}
-.pull-quote-block::before {
-  content: '\201C';
-  position: absolute;
-  top: -10px;
-  left: 12px;
-  font-family: 'Fraunces', serif;
-  font-size: 80px;
-  color: rgba(212,175,138,0.15);
-  line-height: 1;
-}
-.pull-quote-text {
-  font-family: 'Fraunces', serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--white);
-  line-height: 1.55;
   position: relative;
-  z-index: 1;
 }
-.pull-quote-text em {
-  color: var(--gold);
-  font-style: normal;
+.quote-section::before {
+  content: '\201C';
+  position: absolute; top: -8px; left: 16px;
+  font-family: 'Fraunces', serif;
+  font-size: 72px; color: rgba(212,175,138,.12); line-height: 1;
 }
+.quote-text {
+  font-family: 'Fraunces', serif;
+  font-size: 13.5px; font-weight: 500;
+  color: var(--white); line-height: 1.65;
+  position: relative; z-index: 1;
+}
+.quote-text em { color: var(--gold); font-style: normal; }
 
-.why-us {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.spec-section { padding: 20px 28px; }
+.spec-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.spec-item {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--off); border-radius: 5px;
+  padding: 6px 10px; border: 1px solid #e0d8cc;
+  font-size: 10px; font-weight: 500; color: var(--ink);
 }
+.spec-item.pi { border-color: var(--gold); background: rgba(212,175,138,.07); font-weight: 600; color: var(--dark); }
+.spec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+.spec-item.pi .spec-dot { background: var(--gold); }
+.spec-pi-tag { font-size: 7.5px; font-weight: 700; color: var(--gold-dark); letter-spacing: .05em; margin-left: auto; }
 
-.why-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: white;
-  border-radius: 7px;
-  padding: 10px 12px;
-  border-left: 3px solid var(--gold);
-}
-.why-icon {
-  font-size: 16px;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.why-content {}
-.why-title {
-  font-size: 10.5px;
-  font-weight: 600;
-  color: var(--teal-dark);
-  line-height: 1.3;
-}
-.why-desc {
-  font-size: 9.5px;
-  color: var(--text-muted);
-  line-height: 1.4;
-  margin-top: 1px;
-}
-
-/* Footer */
+/* FOOTER */
 .footer {
-  background: var(--teal-dark);
-  padding: 10px 40px;
+  background: var(--dark);
+  border-top: 2px solid var(--gold);
+  padding: 10px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  border-top: 2px solid var(--gold);
 }
-
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-contact-name {
-  font-family: 'Fraunces', serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--white);
-}
-.footer-liaison-label {
-  font-size: 8.5px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--gold);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1px;
-}
-
-.footer-details {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.footer-item {
-  font-size: 10px;
-  color: rgba(255,255,255,0.7);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.footer-item strong {
-  color: var(--white);
-  font-weight: 600;
-}
-.footer-sep {
-  color: rgba(255,255,255,0.25);
-}
-.footer-address {
-  font-size: 9.5px;
-  color: rgba(255,255,255,0.5);
-}
-
-/* Print */
-@media print {
-  html, body { width: 11in; height: 8.5in; overflow: hidden; }
-  .page { width: 11in; height: 8.5in; }
-  @page { size: 11in 8.5in landscape; margin: 0; }
-}
+.footer-liaison { font-size: 8.5px; font-weight: 600; letter-spacing: .12em; color: var(--gold); text-transform: uppercase; margin-bottom: 2px; }
+.footer-name { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; color: var(--white); }
+.footer-details { display: flex; gap: 16px; align-items: center; }
+.footer-item { font-size: 10px; color: rgba(255,255,255,.6); }
+.footer-item strong { color: var(--white); }
+.footer-sep { color: rgba(255,255,255,.2); }
+.footer-addr { font-size: 9px; color: rgba(255,255,255,.4); }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Header -->
+  <!-- HEADER -->
   <div class="header">
     <div class="header-left">
       <img class="logo" src="../../repo/reference/logo/culver-city-logo.png" alt="Culver City Surgical Specialists">
       <div class="header-divider"></div>
       <div class="header-tagline">Personal Injury Partner — Built for Plaintiff Attorneys</div>
     </div>
-    <div class="header-contact">
+    <div class="header-right">
       <strong>Chronos — PI Liaison</strong><br>
       310-837-3834 &nbsp;·&nbsp; culvercitysurgical.com
     </div>
   </div>
 
-  <!-- Hero band -->
-  <div class="hero-band">
+  <!-- HERO BAND -->
+  <div class="hero">
     <div class="hero-quote">
-      "Your clients get fast, quality surgical care. The record we produce will <em>support your case</em>.<br>
-      We take the lien — <em>you don't advance a dollar</em>."
+      "Your clients get fast, quality surgical care. The record supports your case.<br>
+      We take the lien — <em>you don't advance a dollar.</em>"
     </div>
-    <div class="hero-badge">
-      <span class="badge-label">Op Notes</span>
-      <span class="badge-val">48 hrs</span>
-    </div>
-    <div class="hero-badge">
-      <span class="badge-label">Upfront Cost</span>
-      <span class="badge-val">$0</span>
-    </div>
-    <div class="hero-badge">
-      <span class="badge-label">Specialties</span>
-      <span class="badge-val">9</span>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <span class="bval">$0</span>
+        <span class="blabel">Advance Cost</span>
+      </div>
+      <div class="hero-badge">
+        <span class="bval">48 hrs</span>
+        <span class="blabel">Op Notes</span>
+      </div>
+      <div class="hero-badge">
+        <span class="bval">9</span>
+        <span class="blabel">Specialties</span>
+      </div>
     </div>
   </div>
 
-  <!-- Stats row -->
-  <div class="stats-row">
-    <div class="stat-tile">
-      <span class="stat-label">Lien / LOP</span>
-      <span class="stat-value">$0 Advance</span>
-      <span class="stat-desc">Full lien and LOP acceptance. Clean billing, zero friction mid-case, resolved at settlement.</span>
+  <!-- STATS ROW -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Lien / LOP</div>
+      <div class="stat-val">$0 Advance</div>
+      <div class="stat-desc">Full lien and LOP acceptance. Clean billing. Resolved cleanly at settlement.</div>
     </div>
-    <div class="stat-tile">
-      <span class="stat-label">Surgical Records</span>
-      <span class="stat-value">48-Hour</span>
-      <span class="stat-desc">Op notes delivered in 48 hrs — demand letter ready before the week is out.</span>
+    <div class="stat">
+      <div class="stat-label">Surgical Records</div>
+      <div class="stat-val">48-Hour</div>
+      <div class="stat-desc">Op notes delivered in 48 hrs — demand letter ready before the week is out.</div>
     </div>
-    <div class="stat-tile">
-      <span class="stat-label">Documentation</span>
-      <span class="stat-value">Causation</span>
-      <span class="stat-desc">Records written with causation language and objective findings that hold up to defense scrutiny.</span>
+    <div class="stat">
+      <div class="stat-label">Documentation</div>
+      <div class="stat-val">Causation</div>
+      <div class="stat-desc">Records written with causation language and objective findings that hold up to defense.</div>
     </div>
-    <div class="stat-tile">
-      <span class="stat-label">Accreditation</span>
-      <span class="stat-value">Joint Comm.</span>
-      <span class="stat-desc">Joint Commission accredited + Medicare approved. Board-certified surgeons. 15+ years.</span>
+    <div class="stat">
+      <div class="stat-label">Accreditation</div>
+      <div class="stat-val">Joint Comm.</div>
+      <div class="stat-desc">Joint Commission accredited + Medicare approved. Board-certified surgeons. 15+ yrs.</div>
     </div>
   </div>
 
-  <!-- Body -->
-  <div class="body-grid">
-
-    <div class="body-left">
-
-      <!-- Case lifecycle flywheel -->
-      <div>
-        <div class="section-label">The Case Lifecycle</div>
-        <div class="flywheel">
-          <div class="fw-step">
-            <div class="fw-circle">
-              ⚖️
-              <span class="fw-num">1</span>
-            </div>
-            <div class="fw-title">Attorney Directs</div>
-            <div class="fw-sub">Call Chronos — one number for all 9 specialties</div>
-          </div>
-          <div class="fw-arrow">→</div>
-          <div class="fw-step">
-            <div class="fw-circle">
-              📅
-              <span class="fw-num">2</span>
-            </div>
-            <div class="fw-title">Scheduled in Days</div>
-            <div class="fw-sub">Lien confirmed at booking, no upfront cost</div>
-          </div>
-          <div class="fw-arrow">→</div>
-          <div class="fw-step">
-            <div class="fw-circle">
-              🏥
-              <span class="fw-num">3</span>
-            </div>
-            <div class="fw-title">Surgery + Record</div>
-            <div class="fw-sub">Board-certified, ASC, 48-hr op note with causation</div>
-          </div>
-          <div class="fw-arrow">→</div>
-          <div class="fw-step">
-            <div class="fw-circle">
-              📋
-              <span class="fw-num">4</span>
-            </div>
-            <div class="fw-title">Demand Filed</div>
-            <div class="fw-sub">Strong record accelerates demand letter</div>
-          </div>
-          <div class="fw-arrow">→</div>
-          <div class="fw-step">
-            <div class="fw-circle">
-              💼
-              <span class="fw-num">5</span>
-            </div>
-            <div class="fw-title">Case Settles Well</div>
-            <div class="fw-sub">Quality docs = stronger position, faster fees</div>
-          </div>
-          <div class="fw-arrow">→</div>
-          <div class="fw-step">
-            <div class="fw-circle">
-              🔄
-              <span class="fw-num">6</span>
-            </div>
-            <div class="fw-title">Repeat</div>
-            <div class="fw-sub">One relationship, all specialties, every case</div>
-          </div>
-        </div>
+  <!-- FLYWHEEL -->
+  <div class="flywheel-section">
+    <div class="section-label">The Case Lifecycle</div>
+    <div class="flywheel">
+      <div class="fw-step">
+        <div class="fw-circle">⚖️<span class="fw-n">1</span></div>
+        <div class="fw-label">Attorney Directs</div>
+        <div class="fw-sub">Call Chronos — direct line</div>
       </div>
-
-      <!-- Specialties -->
-      <div>
-        <div class="section-label">9 Specialties — One Relationship</div>
-        <div class="specialties-grid">
-          <div class="spec-pill highlight">
-            <div class="spec-dot"></div>
-            <div>
-              <div class="spec-name">Pain Management</div>
-              <div class="spec-badge">HIGH CASE VALUE</div>
-            </div>
-          </div>
-          <div class="spec-pill highlight">
-            <div class="spec-dot"></div>
-            <div>
-              <div class="spec-name">Orthopedics</div>
-              <div class="spec-badge">HIGH CASE VALUE</div>
-            </div>
-          </div>
-          <div class="spec-pill highlight">
-            <div class="spec-dot"></div>
-            <div>
-              <div class="spec-name">Spine Surgery</div>
-              <div class="spec-badge">HIGH CASE VALUE</div>
-            </div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">ENT</div></div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">General Surgery</div></div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">Podiatry</div></div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">Gastroenterology</div></div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">Plastic Surgery</div></div>
-          </div>
-          <div class="spec-pill">
-            <div class="spec-dot"></div>
-            <div><div class="spec-name">Gynecology</div></div>
-          </div>
-        </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">📅<span class="fw-n">2</span></div>
+        <div class="fw-label">Scheduled in Days</div>
+        <div class="fw-sub">Lien confirmed. $0 advance.</div>
       </div>
-
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">🏥<span class="fw-n">3</span></div>
+        <div class="fw-label">Surgery + Record</div>
+        <div class="fw-sub">Board-certified, accredited ASC</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">📋<span class="fw-n">4</span></div>
+        <div class="fw-label">48-Hr Op Note</div>
+        <div class="fw-sub">Causation + objective findings</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">📁<span class="fw-n">5</span></div>
+        <div class="fw-label">Demand Filed</div>
+        <div class="fw-sub">Strong record, before week's end</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">💼<span class="fw-n">6</span></div>
+        <div class="fw-label">Case Settles Well</div>
+        <div class="fw-sub">Better docs = better position</div>
+      </div>
     </div>
-
-    <div class="body-right">
-
-      <div class="pull-quote-block">
-        <div class="pull-quote-text">
-          "Your clients get fast, quality surgical care. The record we produce will support your case.<br><br>
-          We take the lien — <em>you don't advance a dollar</em>."
-        </div>
-      </div>
-
-      <div class="why-us">
-        <div class="section-label">Why Plaintiff Attorneys Choose Us</div>
-        <div class="why-item">
-          <span class="why-icon">💰</span>
-          <div class="why-content">
-            <div class="why-title">Full Lien / LOP — $0 Upfront</div>
-            <div class="why-desc">No advances, no pressure on your client. We accept liens and LOPs, resolved cleanly at settlement.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">📄</span>
-          <div class="why-content">
-            <div class="why-title">Records Built for Litigation</div>
-            <div class="why-desc">Op notes include causation language and objective findings — delivered in 48 hours. Demand letters move fast.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">⚡</span>
-          <div class="why-content">
-            <div class="why-title">Speed = Faster Fees</div>
-            <div class="why-desc">Faster scheduling + 48-hr records = faster demands = faster settlement. One liaison, no runaround.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-icon">🏅</span>
-          <div class="why-content">
-            <div class="why-title">Defensible Credentials</div>
-            <div class="why-desc">Joint Commission accredited, Medicare approved, board-certified surgeons. Documentation holds up in court.</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
   </div>
 
-  <!-- Footer -->
+  <!-- QUOTE + SPECIALTIES -->
+  <div class="mid-row">
+    <div class="quote-section">
+      <div class="quote-text">
+        "Your clients get fast, quality surgical care. The record we produce will support your case.<br><br>
+        We take the lien — <em>you don't advance a dollar.</em>"
+      </div>
+    </div>
+    <div class="spec-section">
+      <div class="section-label">9 Specialties — One Relationship</div>
+      <div class="spec-list">
+        <div class="spec-item pi"><div class="spec-dot"></div>Pain Management<span class="spec-pi-tag">VALUE</span></div>
+        <div class="spec-item pi"><div class="spec-dot"></div>Orthopedics<span class="spec-pi-tag">VALUE</span></div>
+        <div class="spec-item pi"><div class="spec-dot"></div>Spine Surgery<span class="spec-pi-tag">VALUE</span></div>
+        <div class="spec-item"><div class="spec-dot"></div>ENT</div>
+        <div class="spec-item"><div class="spec-dot"></div>General Surgery</div>
+        <div class="spec-item"><div class="spec-dot"></div>Podiatry</div>
+        <div class="spec-item"><div class="spec-dot"></div>Gastroenterology</div>
+        <div class="spec-item"><div class="spec-dot"></div>Plastic Surgery</div>
+        <div class="spec-item"><div class="spec-dot"></div>Gynecology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-left">
-      <div>
-        <span class="footer-liaison-label">PI Liaison — Direct Line</span>
-        <span class="footer-contact-name">Chronos</span>
-      </div>
-      <div class="footer-details">
-        <span class="footer-item"><strong>310-837-3834</strong></span>
-        <span class="footer-sep">·</span>
-        <span class="footer-item">Fax: 310-837-3015</span>
-        <span class="footer-sep">·</span>
-        <span class="footer-item"><strong>culvercitysurgical.com</strong></span>
-      </div>
+    <div>
+      <div class="footer-liaison">PI Liaison — Direct Line</div>
+      <div class="footer-name">Chronos</div>
     </div>
-    <div class="footer-address">3831 Hughes Ave, Suite 702, Culver City, CA 90232</div>
+    <div class="footer-details">
+      <span class="footer-item"><strong>310-837-3834</strong></span>
+      <span class="footer-sep">·</span>
+      <span class="footer-item">Fax: 310-837-3015</span>
+      <span class="footer-sep">·</span>
+      <span class="footer-item"><strong>culvercitysurgical.com</strong></span>
+    </div>
+    <div class="footer-addr">3831 Hughes Ave, Suite 702, Culver City, CA 90232</div>
   </div>
 
 </div>
