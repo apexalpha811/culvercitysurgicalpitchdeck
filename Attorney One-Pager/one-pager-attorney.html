@@ -60,7 +60,7 @@ html, body {
   width: 11in;
   height: 8.5in;
   display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-rows: auto auto auto 1fr auto;
   background: var(--white);
   position: relative;
 }
@@ -221,6 +221,7 @@ html, body {
   grid-template-columns: 1fr 320px;
   gap: 0;
   overflow: hidden;
+  min-height: 0;
 }
 
 /* Left: flywheel + specialties */
@@ -230,6 +231,8 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  justify-content: space-between;
+  min-height: 0;
 }
 
 .section-label {
@@ -365,6 +368,8 @@ html, body {
   flex-direction: column;
   gap: 16px;
   background: var(--off-white);
+  justify-content: space-between;
+  min-height: 0;
 }
 
 .pull-quote-block {
