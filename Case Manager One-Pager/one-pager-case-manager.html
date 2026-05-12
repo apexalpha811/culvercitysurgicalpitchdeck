@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culver City Surgical — Case Manager One-Pager</title>
+<style>
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../../repo/reference/fonts/fraunces-600.woff2') format('woff2');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../../repo/reference/fonts/fraunces-500.woff2') format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../../repo/reference/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../../repo/reference/fonts/inter-500.woff2') format('woff2');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../../repo/reference/fonts/inter-600.woff2') format('woff2');
+  font-weight: 600;
+}
+
+:root {
+  --teal-dark: #16393b;
+  --teal: #1e4c4f;
+  --teal-light: #4bbec6;
+  --gold: #d4af8a;
+  --gold-light: #e8cfa8;
+  --white: #ffffff;
+  --off-white: #f7f9f9;
+  --text: #1a2e2f;
+  --text-muted: #4a6566;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 11in;
+  height: 8.5in;
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* Layout */
+.page {
+  width: 11in;
+  height: 8.5in;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  background: var(--white);
+  position: relative;
+}
+
+/* Header */
+.header {
+  background: var(--teal-dark);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.header-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255,255,255,0.25);
+}
+
+.header-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--teal-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header-contact {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  text-align: right;
+  line-height: 1.6;
+}
+.header-contact strong {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Hero band */
+.hero-band {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.35;
+  flex: 1;
+}
+
+.hero-quote em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.hero-badge {
+  background: rgba(75,190,198,0.15);
+  border: 1px solid rgba(75,190,198,0.4);
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  white-space: nowrap;
+}
+.hero-badge .badge-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--teal-light);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+.hero-badge .badge-val {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  display: block;
+  line-height: 1;
+}
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 3px solid var(--gold);
+}
+
+.stat-tile {
+  padding: 16px 24px;
+  border-right: 1px solid #e0eaeb;
+  background: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  position: relative;
+}
+.stat-tile:last-child { border-right: none; }
+
+.stat-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--teal-dark);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 2px;
+}
+.stat-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.stat-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--teal-light);
+}
+
+/* Main body */
+.body-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+/* Left: flywheel + specialties */
+.body-left {
+  padding: 20px 28px;
+  border-right: 1px solid #dce9ea;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  margin-bottom: 8px;
+}
+
+/* Flywheel */
+.flywheel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.fw-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  flex: 1;
+}
+
+.fw-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(22,57,59,0.25);
+}
+
+.fw-circle .fw-num {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.fw-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--teal-dark);
+  line-height: 1.3;
+}
+.fw-sub {
+  font-size: 8.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.fw-arrow {
+  flex: 0 0 auto;
+  color: var(--teal-light);
+  font-size: 16px;
+  padding: 0 2px;
+  margin-top: -16px;
+}
+
+/* Specialties grid */
+.specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.spec-pill {
+  background: white;
+  border: 1px solid #d0e4e5;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.spec-pill.highlight {
+  background: rgba(22,57,59,0.05);
+  border-color: var(--teal-light);
+}
+
+.spec-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+.spec-pill.highlight .spec-dot {
+  background: var(--teal-light);
+}
+
+.spec-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+.spec-pill.highlight .spec-name {
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+.spec-badge {
+  font-size: 7.5px;
+  font-weight: 700;
+  color: var(--teal-light);
+  letter-spacing: 0.05em;
+}
+
+/* Right: pull quote + why us */
+.body-right {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--off-white);
+  justify-content: space-between;
+}
+
+.pull-quote-block {
+  background: var(--teal-dark);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.pull-quote-block::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  color: rgba(75,190,198,0.2);
+  line-height: 1;
+}
+.pull-quote-text {
+  font-family: 'Fraunces', serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+.pull-quote-text em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.why-us {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: white;
+  border-radius: 7px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--teal-light);
+}
+.why-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.why-content {}
+.why-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--teal-dark);
+  line-height: 1.3;
+}
+.why-desc {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 1px;
+}
+
+/* Footer */
+.footer {
+  background: var(--teal-dark);
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-contact-name {
+  font-family: 'Fraunces', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+}
+.footer-liaison-label {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.footer-details {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.footer-item {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.footer-item strong {
+  color: var(--white);
+  font-weight: 600;
+}
+.footer-sep {
+  color: rgba(255,255,255,0.25);
+}
+.footer-address {
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Print */
+@media print {
+  html, body { width: 11in; height: 8.5in; overflow: hidden; }
+  .page { width: 11in; height: 8.5in; }
+  @page { size: 11in 8.5in landscape; margin: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <img class="logo" src="../../repo/reference/logo/culver-city-logo.png" alt="Culver City Surgical Specialists">
+      <div class="header-divider"></div>
+      <div class="header-tagline">Personal Injury Partner — Built for Case Managers</div>
+    </div>
+    <div class="header-contact">
+      <strong>Chronos — PI Liaison</strong><br>
+      310-837-3834 &nbsp;·&nbsp; culvercitysurgical.com
+    </div>
+  </div>
+
+  <!-- Hero band -->
+  <div class="hero-band">
+    <div class="hero-quote">
+      "We handle the <em>lien</em>. We document for <em>litigation</em>. We pick up the <em>phone</em>."
+    </div>
+    <div class="hero-badge">
+      <span class="badge-label">Surgical Notes</span>
+      <span class="badge-val">48 hrs</span>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-label">Specialties</span>
+      <span class="badge-val">9</span>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-label">Procedures</span>
+      <span class="badge-val">1,000+</span>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="stats-row">
+    <div class="stat-tile">
+      <span class="stat-label">We Accept</span>
+      <span class="stat-value">Liens / LOPs</span>
+      <span class="stat-desc">No upfront payment required from client or firm. We bill on lien.</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">Surgical Notes</span>
+      <span class="stat-value">48-Hour</span>
+      <span class="stat-desc">Op notes out in 48 hrs — attorney's demand letter moves before the week is out.</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">Accreditation</span>
+      <span class="stat-value">Joint Comm.</span>
+      <span class="stat-desc">Joint Commission accredited + Medicare approved ambulatory surgery center.</span>
+    </div>
+    <div class="stat-tile">
+      <span class="stat-label">Your Line</span>
+      <span class="stat-value">Same Day</span>
+      <span class="stat-desc">Dedicated PI liaison (Chronos). Call back guaranteed same business day.</span>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body-grid">
+
+    <div class="body-left">
+
+      <!-- Referral flywheel -->
+      <div>
+        <div class="section-label">How the Referral Works</div>
+        <div class="flywheel">
+          <div class="fw-step">
+            <div class="fw-circle">
+              📞
+              <span class="fw-num">1</span>
+            </div>
+            <div class="fw-title">CM calls Chronos</div>
+            <div class="fw-sub">One call, direct line, same-day response</div>
+          </div>
+          <div class="fw-arrow">→</div>
+          <div class="fw-step">
+            <div class="fw-circle">
+              📅
+              <span class="fw-num">2</span>
+            </div>
+            <div class="fw-title">Scheduled in Days</div>
+            <div class="fw-sub">Not weeks — lien confirmed at booking</div>
+          </div>
+          <div class="fw-arrow">→</div>
+          <div class="fw-step">
+            <div class="fw-circle">
+              🏥
+              <span class="fw-num">3</span>
+            </div>
+            <div class="fw-title">Surgery Performed</div>
+            <div class="fw-sub">Board-certified surgeons, ASC setting</div>
+          </div>
+          <div class="fw-arrow">→</div>
+          <div class="fw-step">
+            <div class="fw-circle">
+              📄
+              <span class="fw-num">4</span>
+            </div>
+            <div class="fw-title">48-Hr Op Note</div>
+            <div class="fw-sub">Causation language, objective findings</div>
+          </div>
+          <div class="fw-arrow">→</div>
+          <div class="fw-step">
+            <div class="fw-circle">
+              ⚖️
+              <span class="fw-num">5</span>
+            </div>
+            <div class="fw-title">Attorney Files</div>
+            <div class="fw-sub">Demand letter ready before week's end</div>
+          </div>
+          <div class="fw-arrow">→</div>
+          <div class="fw-step">
+            <div class="fw-circle">
+              ✅
+              <span class="fw-num">6</span>
+            </div>
+            <div class="fw-title">Case Settles</div>
+            <div class="fw-sub">Client cared for. Lien resolved. Repeat.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specialties -->
+      <div>
+        <div class="section-label">9 Specialties Under One Roof</div>
+        <div class="specialties-grid">
+          <div class="spec-pill highlight">
+            <div class="spec-dot"></div>
+            <div>
+              <div class="spec-name">Pain Management</div>
+              <div class="spec-badge">PI CRITICAL</div>
+            </div>
+          </div>
+          <div class="spec-pill highlight">
+            <div class="spec-dot"></div>
+            <div>
+              <div class="spec-name">Orthopedics</div>
+              <div class="spec-badge">PI CRITICAL</div>
+            </div>
+          </div>
+          <div class="spec-pill highlight">
+            <div class="spec-dot"></div>
+            <div>
+              <div class="spec-name">Spine Surgery</div>
+              <div class="spec-badge">PI CRITICAL</div>
+            </div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">ENT</div></div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">General Surgery</div></div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">Podiatry</div></div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">Gastroenterology</div></div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">Plastic Surgery</div></div>
+          </div>
+          <div class="spec-pill">
+            <div class="spec-dot"></div>
+            <div><div class="spec-name">Gynecology</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="body-right">
+
+      <div class="pull-quote-block">
+        <div class="pull-quote-text">
+          "We handle the lien. We document for litigation. We pick up the phone.<br><br>
+          Your clients get care — <em>the record supports the case</em>."
+        </div>
+      </div>
+
+      <div class="why-us">
+        <div class="section-label">Why Case Managers Choose Us</div>
+        <div class="why-item">
+          <span class="why-icon">🤝</span>
+          <div class="why-content">
+            <div class="why-title">Liens & LOPs — No Friction</div>
+            <div class="why-desc">We accept letters of protection and work directly on lien. No upfront costs, no delays at authorization.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">⚡</span>
+          <div class="why-content">
+            <div class="why-title">48-Hour Operative Notes</div>
+            <div class="why-desc">Delivered fast with causation language and objective findings that hold up in litigation.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">📱</span>
+          <div class="why-content">
+            <div class="why-title">Dedicated PI Liaison</div>
+            <div class="why-desc">Chronos handles every referral personally. Same-day callback, no phone trees, no voicemail black holes.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🏅</span>
+          <div class="why-content">
+            <div class="why-title">Joint Commission Accredited</div>
+            <div class="why-desc">Medicare-approved ASC. 15+ years serving Southern California. 98% patient satisfaction.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <div>
+        <span class="footer-liaison-label">PI Liaison — Direct Line</span>
+        <span class="footer-contact-name">Chronos</span>
+      </div>
+      <div class="footer-details">
+        <span class="footer-item"><strong>310-837-3834</strong></span>
+        <span class="footer-sep">·</span>
+        <span class="footer-item">Fax: 310-837-3015</span>
+        <span class="footer-sep">·</span>
+        <span class="footer-item"><strong>culvercitysurgical.com</strong></span>
+      </div>
+    </div>
+    <div class="footer-address">3831 Hughes Ave, Suite 702, Culver City, CA 90232</div>
+  </div>
+
+</div>
+</body>
+</html>

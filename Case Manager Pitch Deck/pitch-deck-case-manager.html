@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Culver City Surgical — PI Case Manager Pitch</title>
+<style>
+@font-face { font-family:"Fraunces"; src:url("../../repo/reference/fonts/fraunces-500.woff2") format("woff2"); font-weight:500; }
+@font-face { font-family:"Fraunces"; src:url("../../repo/reference/fonts/fraunces-600.woff2") format("woff2"); font-weight:600; }
+@font-face { font-family:"Inter"; src:url("../../repo/reference/fonts/inter-400.woff2") format("woff2"); font-weight:400; }
+@font-face { font-family:"Inter"; src:url("../../repo/reference/fonts/inter-500.woff2") format("woff2"); font-weight:500; }
+@font-face { font-family:"Inter"; src:url("../../repo/reference/fonts/inter-600.woff2") format("woff2"); font-weight:600; }
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --teal-dark:#16393b;
+  --teal:#1e4c4f;
+  --teal-mid:#3c989e;
+  --teal-light:#4bbec6;
+  --teal-pale:#edf8f9;
+  --gold:#d4af8a;
+  --gold-light:#f6efe7;
+  --white:#fff;
+  --ink:#020304;
+}
+
+html,body{height:100%;overflow:hidden;}
+body{font-family:"Inter",sans-serif;background:var(--teal-dark);}
+
+/* ── Deck container ── */
+.deck{
+  height:100vh;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
+.deck::-webkit-scrollbar{display:none;}
+
+/* ── Slide base ── */
+.slide{
+  height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:5vh 8vw;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ── Progress bar ── */
+.progress{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--teal-light),var(--gold));
+  z-index:100;
+  transition:width 400ms ease;
+}
+
+/* ── Slide counter ── */
+.counter{
+  position:fixed;bottom:1.5rem;right:2rem;
+  font-family:"Fraunces",serif;font-size:0.85rem;
+  color:rgba(255,255,255,0.45);letter-spacing:0.1em;
+  z-index:100;
+}
+
+/* ── Nav dots ── */
+.dots{
+  position:fixed;right:1.25rem;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:0.5rem;z-index:100;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,0.25);
+  cursor:pointer;transition:background 250ms,transform 250ms;
+  border:none;
+}
+.dot.active{background:var(--teal-light);transform:scale(1.4);}
+
+/* ════════════════════════════════
+   SLIDE 1 — COVER
+════════════════════════════════ */
+.s-cover{
+  background:linear-gradient(145deg,#0d2426 0%,var(--teal-dark) 45%,#1a4547 100%);
+  text-align:center;
+  gap:1.5rem;
+}
+.s-cover::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(75,190,198,0.12),transparent 70%);
+  pointer-events:none;
+}
+.s-cover .logo{height:56px;width:auto;filter:brightness(0) invert(1);margin-bottom:0.5rem;}
+.s-cover .eyebrow{
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--teal-light);font-weight:600;
+}
+.s-cover h1{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.1;
+  color:var(--white);
+}
+.s-cover h1 em{font-style:italic;color:var(--gold);}
+.s-cover .tagline{
+  font-size:clamp(1rem,2vw,1.3rem);color:rgba(255,255,255,0.75);
+  max-width:560px;line-height:1.55;
+}
+.s-cover .contact-pill{
+  display:inline-flex;align-items:center;gap:1.5rem;
+  padding:0.85rem 2rem;
+  border:1px solid rgba(75,190,198,0.35);
+  border-radius:999px;
+  font-size:0.88rem;color:rgba(255,255,255,0.85);
+  margin-top:0.5rem;
+}
+.s-cover .contact-pill strong{color:var(--teal-light);}
+
+/* ════════════════════════════════
+   SLIDE 2 — THE PROBLEM
+════════════════════════════════ */
+.s-problem{background:var(--white);align-items:flex-start;}
+.s-problem .col-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;width:100%;max-width:960px;}
+.s-problem .left{}
+.slide-eyebrow{
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--teal-mid);font-weight:600;margin-bottom:1rem;
+}
+.slide-h2{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:clamp(2rem,3.8vw,3rem);line-height:1.15;
+  color:var(--ink);margin-bottom:1.5rem;
+}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:1rem;}
+.pain-list li{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.25rem;
+  border-radius:10px;
+  background:#fef2f2;
+  border-left:3px solid #f87171;
+  font-size:0.95rem;line-height:1.45;color:#374151;
+}
+.pain-list li .icon{font-size:1.2rem;flex-shrink:0;margin-top:0.05rem;}
+.s-problem .right{
+  background:var(--teal-dark);border-radius:16px;
+  padding:2.25rem;display:flex;flex-direction:column;justify-content:center;
+}
+.quote-block{
+  font-family:"Fraunces",serif;font-style:italic;font-weight:500;
+  font-size:clamp(1.1rem,1.8vw,1.45rem);line-height:1.5;
+  color:var(--white);margin-bottom:1.5rem;
+}
+.quote-block span{color:var(--gold);}
+.attribution{font-size:0.78rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;}
+
+/* ════════════════════════════════
+   SLIDE 3 — BUILT FOR PI
+════════════════════════════════ */
+.s-built{background:var(--teal-dark);}
+.s-built .content{max-width:900px;width:100%;text-align:center;}
+.s-built .slide-h2{color:var(--white);}
+.s-built .slide-eyebrow{color:var(--teal-light);}
+.built-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;
+  margin-top:2rem;
+}
+.built-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(75,190,198,0.2);
+  border-radius:14px;padding:1.75rem 1.5rem;
+  text-align:left;
+  position:relative;
+  transition:background 250ms;
+}
+.built-card:hover{background:rgba(75,190,198,0.08);}
+.built-card .check{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal-light),var(--teal-mid));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;color:var(--white);
+  margin-bottom:1rem;flex-shrink:0;
+}
+.built-card h3{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:1.15rem;color:var(--white);margin-bottom:0.4rem;
+}
+.built-card p{font-size:0.88rem;color:rgba(255,255,255,0.65);line-height:1.5;}
+.built-card .badge{
+  display:inline-block;
+  background:var(--gold);color:var(--ink);
+  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.2rem 0.6rem;border-radius:999px;
+  margin-bottom:0.6rem;
+}
+
+/* ════════════════════════════════
+   SLIDE 4 — WHO WE ARE
+════════════════════════════════ */
+.s-who{background:var(--teal);}
+.s-who .content{max-width:940px;width:100%;text-align:center;}
+.s-who .slide-h2{color:var(--white);}
+.s-who .slide-eyebrow{color:var(--gold);}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;
+  margin-top:2.5rem;
+}
+.stat-tile{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px;padding:1.75rem 1rem;
+  text-align:center;
+}
+.stat-num{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:clamp(2rem,3.5vw,2.8rem);line-height:1;
+  color:var(--teal-light);margin-bottom:0.4rem;
+}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.65);line-height:1.4;text-transform:uppercase;letter-spacing:0.08em;}
+.accred-row{
+  display:flex;align-items:center;justify-content:center;gap:2rem;
+  margin-top:2rem;padding:1.25rem 2rem;
+  background:rgba(255,255,255,0.05);border-radius:10px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.accred-badge{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:rgba(255,255,255,0.8);}
+.accred-badge .dot-acc{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* ════════════════════════════════
+   SLIDE 5 — SPECIALTIES
+════════════════════════════════ */
+.s-spec{background:var(--white);align-items:flex-start;}
+.s-spec .content{max-width:960px;width:100%;}
+.s-spec .slide-h2{color:var(--ink);}
+.spec-grid-pitch{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;
+  margin-top:1.75rem;
+}
+.spec-tile{
+  padding:1rem 1.25rem;border-radius:10px;
+  border:1px solid #e5e7eb;
+  font-size:0.88rem;font-weight:500;color:#374151;
+  display:flex;align-items:center;gap:0.6rem;
+  transition:border-color 200ms,background 200ms;
+}
+.spec-tile .spec-dot{width:10px;height:10px;border-radius:50%;background:#e5e7eb;flex-shrink:0;}
+.spec-tile.pi-hot{
+  border-color:var(--teal-light);background:var(--teal-pale);
+  color:var(--teal-dark);font-weight:600;
+}
+.spec-tile.pi-hot .spec-dot{background:var(--teal-light);}
+.pi-note{
+  margin-top:1.25rem;padding:0.85rem 1.25rem;
+  background:#fffbeb;border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;
+  font-size:0.82rem;color:#78350f;
+}
+
+/* ════════════════════════════════
+   SLIDE 6 — DOCUMENTATION
+════════════════════════════════ */
+.s-doc{
+  background:linear-gradient(145deg,#0d2426,var(--teal-dark));
+  text-align:center;
+}
+.s-doc .content{max-width:820px;width:100%;}
+.s-doc .slide-h2{color:var(--white);}
+.s-doc .slide-eyebrow{color:var(--teal-light);}
+.doc-items{
+  display:flex;flex-direction:column;gap:1rem;
+  margin-top:2rem;text-align:left;
+}
+.doc-item{
+  display:flex;align-items:flex-start;gap:1.25rem;
+  padding:1.25rem 1.5rem;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(75,190,198,0.2);
+  border-radius:12px;
+}
+.doc-item .num{
+  font-family:"Fraunces",serif;font-size:1.8rem;font-weight:500;
+  color:var(--teal-light);opacity:0.6;line-height:1;
+  flex-shrink:0;width:2rem;text-align:right;
+}
+.doc-item h3{font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+.doc-item p{font-size:0.82rem;color:rgba(255,255,255,0.6);}
+.doc-promise{
+  margin-top:2rem;
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:clamp(1.1rem,2vw,1.4rem);color:var(--gold);
+  line-height:1.45;
+}
+
+/* ════════════════════════════════
+   SLIDE 7 — FLYWHEEL
+════════════════════════════════ */
+.s-fly{background:var(--white);}
+.s-fly .content{max-width:900px;width:100%;text-align:center;}
+.s-fly .slide-h2{color:var(--ink);}
+.flywheel{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;
+  margin-top:2.5rem;
+}
+.fw-step{
+  display:flex;flex-direction:column;align-items:center;
+  gap:0.5rem;width:130px;
+}
+.fw-circle{
+  width:72px;height:72px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+  background:var(--teal-pale);
+  border:2px solid var(--teal-light);
+}
+.fw-label{font-size:0.72rem;font-weight:600;text-align:center;color:var(--teal-dark);line-height:1.3;text-transform:uppercase;letter-spacing:0.05em;}
+.fw-arrow{
+  font-size:1.4rem;color:var(--teal-light);
+  margin:0 -0.25rem;margin-bottom:1.5rem;
+  flex-shrink:0;
+}
+.fly-caption{
+  margin-top:1.75rem;
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:1.1rem;color:#6b7280;
+  max-width:600px;margin-left:auto;margin-right:auto;
+}
+
+/* ════════════════════════════════
+   SLIDE 8 — CTA
+════════════════════════════════ */
+.s-cta{
+  background:linear-gradient(145deg,#0a1f21,var(--teal-dark),#1a4547);
+  text-align:center;gap:1.5rem;
+}
+.s-cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(75,190,198,0.1),transparent);
+  pointer-events:none;
+}
+.s-cta .logo{height:50px;filter:brightness(0) invert(1);margin-bottom:0.5rem;}
+.s-cta .slide-eyebrow{color:var(--gold);}
+.s-cta h2{
+  font-family:"Fraunces",serif;font-weight:500;
+  font-size:clamp(2rem,4vw,3.2rem);color:var(--white);
+  line-height:1.15;
+}
+.contact-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;
+  margin-top:1rem;max-width:760px;width:100%;
+}
+.contact-card{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(75,190,198,0.2);
+  border-radius:14px;padding:1.5rem 1.25rem;
+}
+.contact-card .cc-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;}
+.contact-card .cc-val{font-family:"Fraunces",serif;font-size:1.1rem;color:var(--white);}
+.contact-card .cc-val a{color:var(--teal-light);text-decoration:none;}
+.cta-oneliner{
+  font-family:"Fraunces",serif;font-style:italic;
+  font-size:clamp(0.95rem,1.6vw,1.2rem);
+  color:rgba(255,255,255,0.6);
+  max-width:560px;
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="prog"></div>
+<div class="counter" id="ctr">1 / 8</div>
+<div class="dots" id="dots"></div>
+
+<div class="deck" id="deck">
+
+<!-- ══ SLIDE 1 — COVER ══ -->
+<section class="slide s-cover">
+  <img class="logo" src="../../repo/reference/logo/culver-city-logo.png" alt="Culver City Surgical" />
+  <p class="eyebrow">For Personal Injury Case Managers</p>
+  <h1>Your PI Clients.<br><em>Faster Care.</em><br>Better Records.</h1>
+  <p class="tagline">A Joint Commission‑accredited ambulatory surgery center built around the way PI cases actually work.</p>
+  <div class="contact-pill">
+    <span>Chronos &nbsp;·&nbsp; PI Liaison</span>
+    <strong>[Direct Cell]</strong>
+    <span>310‑837‑3834</span>
+  </div>
+</section>
+
+<!-- ══ SLIDE 2 — THE PROBLEM ══ -->
+<section class="slide s-problem">
+  <div class="col-layout">
+    <div class="left">
+      <p class="slide-eyebrow">The Reality</p>
+      <h2 class="slide-h2">What Case Managers Deal With Every Day</h2>
+      <ul class="pain-list">
+        <li><span class="icon">🕐</span><span>Slow scheduling and facilities that never call back</span></li>
+        <li><span class="icon">📄</span><span>Surgical notes that take weeks — and still lack causation language</span></li>
+        <li><span class="icon">⚡</span><span>Providers who don't understand liens or fight the process</span></li>
+        <li><span class="icon">🔁</span><span>Facilities that create work instead of solving it</span></li>
+      </ul>
+    </div>
+    <div class="right">
+      <p class="quote-block">"We handle the lien. We document for litigation. We pick up the phone. <span>Your clients get care fast — and the record supports the case.</span>"</p>
+      <p class="attribution">— Culver City Surgical, PI Commitment</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 3 — BUILT FOR PI ══ -->
+<section class="slide s-built">
+  <div class="content">
+    <p class="slide-eyebrow">Our Commitment</p>
+    <h2 class="slide-h2" style="color:var(--white)">Built for Personal Injury Case Managers</h2>
+    <div class="built-grid">
+      <div class="built-card">
+        <div class="badge">Non-negotiable</div>
+        <div class="check">✓</div>
+        <h3>Liens &amp; LOPs Accepted</h3>
+        <p>We work in California's lien-based economy. No advance costs, ever. Clear written lien process before the first case.</p>
+      </div>
+      <div class="built-card">
+        <div class="badge">Every case</div>
+        <div class="check">✓</div>
+        <h3>48-Hour Surgical Notes</h3>
+        <p>Causation language and objective findings — delivered within 48 hours of surgery, every time. Your attorney's demand letter doesn't wait.</p>
+      </div>
+      <div class="built-card">
+        <div class="check">✓</div>
+        <h3>Dedicated PI Liaison</h3>
+        <p><strong style="color:var(--teal-light)">Chronos</strong> — named contact, direct cell, same-day response guarantee. Not a scheduling line. A person who picks up.</p>
+      </div>
+      <div class="built-card">
+        <div class="check">✓</div>
+        <h3>Same-Day Scheduling Callback</h3>
+        <p>CMs judge a facility before the first case. We call back the same day, every time, and confirm scheduling within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 4 — WHO WE ARE ══ -->
+<section class="slide s-who">
+  <div class="content">
+    <p class="slide-eyebrow">About Us</p>
+    <h2 class="slide-h2" style="color:var(--white)">Culver City Surgical Specialists</h2>
+    <div class="stats-grid">
+      <div class="stat-tile">
+        <div class="stat-num">1,000+</div>
+        <div class="stat-label">Successful procedures performed</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Patient satisfaction rate</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Years accredited</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Surgical specialties under one roof</div>
+      </div>
+    </div>
+    <div class="accred-row">
+      <div class="accred-badge"><span class="dot-acc"></span> Joint Commission Accredited</div>
+      <div class="accred-badge"><span class="dot-acc"></span> Medicare Approved</div>
+      <div class="accred-badge"><span class="dot-acc"></span> Board-Certified Surgeons</div>
+      <div class="accred-badge"><span class="dot-acc"></span> Same-Day Procedures</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 5 — SPECIALTIES ══ -->
+<section class="slide s-spec">
+  <div class="content">
+    <p class="slide-eyebrow">Services</p>
+    <h2 class="slide-h2">9 Specialties — One Facility, One Relationship</h2>
+    <div class="spec-grid-pitch">
+      <div class="spec-tile pi-hot"><span class="spec-dot"></span>Pain Management</div>
+      <div class="spec-tile pi-hot"><span class="spec-dot"></span>Orthopedic Surgery</div>
+      <div class="spec-tile pi-hot"><span class="spec-dot"></span>Spine Surgery</div>
+      <div class="spec-tile"><span class="spec-dot"></span>Ear, Nose &amp; Throat</div>
+      <div class="spec-tile"><span class="spec-dot"></span>General Surgery</div>
+      <div class="spec-tile"><span class="spec-dot"></span>Foot &amp; Ankle (Podiatry)</div>
+      <div class="spec-tile"><span class="spec-dot"></span>Gastroenterology</div>
+      <div class="spec-tile"><span class="spec-dot"></span>Plastic Surgery</div>
+      <div class="spec-tile"><span class="spec-dot"></span>Gynecology</div>
+    </div>
+    <div class="pi-note">⚡ <strong>PI-critical specialties highlighted</strong> — Pain Management, Orthopedics, and Spine Surgery cover the majority of auto and slip-and-fall surgical needs.</div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 6 — DOCUMENTATION ══ -->
+<section class="slide s-doc">
+  <div class="content">
+    <p class="slide-eyebrow">Documentation</p>
+    <h2 class="slide-h2">The Record That Moves Your Cases</h2>
+    <div class="doc-items">
+      <div class="doc-item">
+        <div class="num">48</div>
+        <div>
+          <h3>Hour Turnaround — Guaranteed</h3>
+          <p>Surgical notes delivered within 48 hours of the procedure. Not a week. Not after follow-up. 48 hours.</p>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div class="num">→</div>
+        <div>
+          <h3>Causation Language Included</h3>
+          <p>Every note connects the injury to the mechanism of trauma. Written to withstand defense scrutiny from day one.</p>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div class="num">→</div>
+        <div>
+          <h3>Objective Clinical Findings</h3>
+          <p>Measurable, documented findings — range of motion, imaging correlation, surgical observations — that build a damages record.</p>
+        </div>
+      </div>
+    </div>
+    <p class="doc-promise">"Your attorney's demand letter moves before the week is out."</p>
+  </div>
+</section>
+
+<!-- ══ SLIDE 7 — FLYWHEEL ══ -->
+<section class="slide s-fly">
+  <div class="content">
+    <p class="slide-eyebrow">How It Works</p>
+    <h2 class="slide-h2">The Referral That Compounds</h2>
+    <div class="flywheel">
+      <div class="fw-step">
+        <div class="fw-circle">📞</div>
+        <div class="fw-label">CM calls<br>Chronos</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">📅</div>
+        <div class="fw-label">Scheduled<br>within days</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">🏥</div>
+        <div class="fw-label">Surgery<br>performed</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">📋</div>
+        <div class="fw-label">48-hr note<br>delivered</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">⚖️</div>
+        <div class="fw-label">Case<br>settles</div>
+      </div>
+      <div class="fw-arrow">→</div>
+      <div class="fw-step">
+        <div class="fw-circle">🔄</div>
+        <div class="fw-label">Next referral<br>automatic</div>
+      </div>
+    </div>
+    <p class="fly-caption">Every step is a marketing moment. Speed, quality, and communication make the next referral inevitable.</p>
+  </div>
+</section>
+
+<!-- ══ SLIDE 8 — CTA ══ -->
+<section class="slide s-cta">
+  <img class="logo" src="../../repo/reference/logo/culver-city-logo.png" alt="Culver City Surgical" />
+  <p class="slide-eyebrow">Let's Work Together</p>
+  <h2>Send us your first case.<br>We'll earn every one after that.</h2>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="cc-label">PI Liaison</div>
+      <div class="cc-val">Chronos<br><small style="font-size:0.8rem;color:rgba(255,255,255,0.5)">[Direct Cell]</small></div>
+    </div>
+    <div class="contact-card">
+      <div class="cc-label">Scheduling &amp; Fax</div>
+      <div class="cc-val"><a href="tel:+13108373834">310‑837‑3834</a><br><small style="font-size:0.78rem;color:rgba(255,255,255,0.4)">Fax 310‑837‑3015</small></div>
+    </div>
+    <div class="contact-card">
+      <div class="cc-label">Location &amp; Website</div>
+      <div class="cc-val" style="font-size:0.88rem">3831 Hughes Ave, Ste 702<br>Culver City, CA 90232</div>
+    </div>
+  </div>
+  <p class="cta-oneliner">"We accept the lien, schedule fast, and deliver documentation that holds up — your clients get care, you get a record."</p>
+</section>
+
+</div><!-- /deck -->
+
+<script>
+const deck = document.getElementById('deck');
+const prog = document.getElementById('prog');
+const ctr  = document.getElementById('ctr');
+const dotsEl = document.getElementById('dots');
+const slides = deck.querySelectorAll('.slide');
+const total = slides.length;
+let current = 0;
+
+// Build dots
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.className='dot'+(i===0?' active':'');
+  b.title='Slide '+(i+1);
+  b.addEventListener('click',()=>goTo(i));
+  dotsEl.appendChild(b);
+});
+
+function goTo(n){
+  n=Math.max(0,Math.min(total-1,n));
+  slides[n].scrollIntoView({behavior:'smooth'});
+}
+
+function update(){
+  const scrollTop=deck.scrollTop;
+  const h=deck.clientHeight;
+  let idx=Math.round(scrollTop/h);
+  idx=Math.max(0,Math.min(total-1,idx));
+  current=idx;
+  prog.style.width=((idx+1)/total*100)+'%';
+  ctr.textContent=(idx+1)+' / '+total;
+  dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+
+deck.addEventListener('scroll',update,{passive:true});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();goTo(current+1);}
+  if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();goTo(current-1);}
+});
+
+update();
+</script>
+</body>
+</html>
